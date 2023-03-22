@@ -1,1 +1,125 @@
+{% extends "UI/coach/base_coach.html" %}
+{% block title %}
+
+Capture Video 
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            
+            {% if msg %}
+                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+            {% endif %}
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Capture_Form</h6>
+                <form action="/UI/coach/capture_form" method="POST" enctype="multipart/form-data">
+                    <div class="row mb-4">
+                        
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Student Id</label>
+                        
+                        <div class="col-sm-6">
+                            
+
+                            <input type="text" id="id" name="id" class="form-control">
+                            
+                               
+                             
+
+                            
+
+                        </div>
+
+                        
+                        
+                    </div>
+                    <div class="row mb-4">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Coach Id</label>
+
+
+                        
+                        <div class="col-sm-6">
+                            <input  type="text" id="coach_id" name="coach_id" class="form-control" value="{{coach_entry['id']}}">
+                            
+                            <!-- <select type="text" class="form-control" id="workout" name="workout">
+                                {%for row in exersize_name%}
+                                <option value="{{row.workout}}">{{row.workout}}</option>
+                                {%endfor%}
+                            </select> -->
+
+                        </div>
+
+                        
+                        
+                    </div>
+                    
+                    
+                    <div class="row mb-4">
+                        
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"> Exercise Name</label>
+                        
+                        <div class="col-sm-6">
+                            
+                            <select type="text" class="form-control" id="workout" name="workout">
+                                {%for row in exersize_name%}
+                                <option value="{{row.workout}}">{{row.workout}}</option>
+                                {%endfor%}
+                            </select>
+
+                        </div>
+
+                        
+                        
+                    </div>
+                    <div class="row mb-4">
+                        
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"> Capture Video</label>
+                        
+                        <div class="col-sm-6">
+                            <input type="file" name="files[]" id="fileInput" class="form-control" multiple >
+                            
+                            <!-- <input  type="file" id="cap_video" name="cap_video" class="form-control"> -->
+
+                        </div>
+                        
+                        <div  class="col-md-2">
+                            <input type="submit" name="submit" class="btn btn-primary" value="UPLOAD"/>
+                        </div>
+                        
+                    </div>
+
+
+
+                    
+                    
+                    
+                </form>
+                <script>
+                    $(document).ready(function(){
+                     // File type validation
+                        $("#fileInput").change(function(){
+                            var fileLength = this.files.length;
+                            var match= ["video/mp4","video/wmv","video/avi","video/3g2"];
+                            var i;
+                            for(i = 0; i < fileLength; i++){ 
+                                var file = this.files[i];
+                                var videofile = file.type;
+                                if(!((videofile==match[0]) || (videofile==match[1]) || (videofile==match[2]) || (videofile==match[3]))){
+                                    alert('Please select a valid image file (WMV/AVI/3G2/mp4).');
+                                    $("#fileInput").val('');
+                                    return false;
+                                }
+                            }
+                        });
+                    });
+                    </script>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
 
