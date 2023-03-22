@@ -1,0 +1,108 @@
+{% extends "UI/coach/base_coach.html" %}
+{% block title %}
+
+Coach_Profile
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            
+            {% if msg %}
+                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+            {% endif %}
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Coach Profile</h6>
+                <form action="/UI/coach/coach_profile" method="POST">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name" value="{{coach_entry['name']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Mobile No</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="mobileno" name="mobileno" value="{{coach_entry['mobileno']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="emailid" name="emailid" value="{{coach_entry['emailid']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="state" id="state" class="form-control" value="{{coach_entry['state']}}">
+                                <!-- <option selected>-----select state-----</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">District</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="district" name="district" value="{{coach_entry['district']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Experience</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="experience" name="experience" value="{{coach_entry['experience']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="username" name="username" value="{{coach_entry['username']}}">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Profile picture</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" id="prf_pic" name="prf_pic">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    
+                    
+                    
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

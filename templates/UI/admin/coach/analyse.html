@@ -1,0 +1,55 @@
+{% extends "UI/coach/base_coach.html" %}
+{% block title %}
+
+Capture Video 
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            
+            {% if msg %}
+                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+            {% endif %}
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Analyse</h6>
+                <form action="/UI/coach/analyse" method="POST">
+                    <div class="row mb-4">
+                        
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Show capture Video</label>
+                        
+                        <div class="col-sm-6">
+                            
+
+                            <video src="{{ url_for('static', filename='uploads/' +capture_form['file_name'] )}}" height=600px; width=600px; controls="true" >
+                               
+                             
+
+                            
+
+                        </div>
+
+                        
+                        
+                    </div>
+
+
+
+                    
+                    
+                    
+
+
+                    
+                    
+                    
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
