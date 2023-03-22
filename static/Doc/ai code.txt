@@ -1,0 +1,12 @@
+For dynamically detecting your realtime movements using your webcam , use these commands below:
+
+python main.py -t sit-up
+# or python main.py -t pull-up
+# or python main.py -t push-up
+# or python main.py -t squat
+# or python main.py -t walk
+
+
+aws
+
+docor
