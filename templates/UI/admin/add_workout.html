@@ -1,0 +1,116 @@
+{% extends "UI/admin/base_admin.html" %}
+{% block title %}
+
+Coach_Entry 
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            
+            {% if msg %}
+                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+            {% endif %}
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Add_Exersize_Form</h6>
+                <form action="/UI/admin/workout" method="POST">
+                    <div class="row mb-4">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label"> Exercise Name</label>
+                        
+                        <div class="col-sm-6">
+                            
+                            <input type="text" class="form-control" id="workout" name="workout">
+
+                        </div>
+                        <div  class="col-md-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        
+                    </div>
+
+
+                    
+                    
+                    
+                </form>
+                <div class="row">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-12 table-responsive text-nowrap">
+                        <table id="data" class="table table-striped">
+
+                            <!--Table head-->
+                            <thead style="background-color: white;">
+                                <tr style="color:#EB1616;">
+                                  <th>Sl.No</th>
+                                  <th>Exercise Name</th>
+                                  
+                                  
+                                  
+                                </tr>
+                              </thead>
+                              <!--Table head-->
+                    
+                              <!--Table body-->
+                           
+                              <tbody>
+                                  {% for row in exersize_name%}
+                                      <tr>
+                                          <td>{{ row.0 }}</td>
+                                          <td>{{ row.1 }}</td>
+                                          
+                                          <!-- <td>
+                                            <a href="/UI/Report/feetitleeport/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}"style="width:35px;height:35px;padding:6px 2px"><span class="glyphicon glyphicon-edit" style="width:32px;height:32px"></span></a>
+                                            <a href="/deletefeetitle/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                                          </td>
+                                           <td>
+                                            <a href="/deletefeetitle/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')" style="width:35px;height:35px;padding:6px 2px"><span class="glyphicon glyphicon-trash" style="width:32px;height:32px"></span></a>
+                                           </td> -->
+                                    </tr>
+                                    <!-- <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Update Feetitle</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/UI/Report/feetitleeport" method="POST">
+                                                        <div class="form-group">
+                                                            <label>feetitle:</label>
+                                                            <input type="hidden"  name="id" value="{{row.0}}">
+                                                            <input type="text" class="form-control" name="feetitle"id="feetitle" value="{{row.1}}">
+                             
+                             
+                                                        </div>
+                                                        <div class="form-group">
+                             
+                             
+                                                            <button class="btn btn-primary" type="sbumit">Update</button>
+                             
+                             
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                
+                                </td> 
+                            </tr>
+                            {% endfor  %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}

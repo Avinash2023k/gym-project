@@ -1,0 +1,222 @@
+{% extends "UI/admin/base_admin.html" %}
+{% block title %}
+
+Coach_Entry 
+{% endblock %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-12">
+            
+            {% if msg %}
+                <div class="alert alert-danger" role="alert">{{ msg }}</div>
+            {% endif %}
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Coach Entry Form</h6>
+                <form action="/UI/admin/coach_entry1" method="POST" enctype="multipart/form-data">
+                    <div class="row mb-3">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Mobile No</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="mobileno" name="mobileno">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-8">
+                            <input type="email" class="form-control" id="emailid" name="emailid">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-8">
+                            <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" name="state" id="state">
+                                <option selected>-----select state-----</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">District</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="district" name="district">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Experience</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="experience" name="experience">
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                    </div>
+                    <dl>
+                    <div class="row mb-3">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Picture</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="files1[]" id="fileInput1" class="form-control" multiple>
+                        </div>
+                    </div>
+                    </dl>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    
+                    
+                    
+                </form>
+                <script>
+                $(document).ready(function(){
+                    // File type validation
+                    $("#fileInput1").change(function(){
+                        var fileLength = this.files1.length;
+                        var match= ["image/jpeg","image/png","image/jpg","image/gif"];
+                        var i;
+                        for(i = 0; i < fileLength; i++){ 
+                            var file = this.files1[i];
+                            var imagefile = file.type;
+                            if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]) || (imagefile==match[3]))){
+                                alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                                $("#fileInput1").val('');
+                                return false;
+                            }
+                        }
+                    });
+                });
+                </script>
+
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-12 table-responsive text-nowrap">
+                        <table id="data" class="table table-striped">
+
+                            <!--Table head-->
+                            <thead style="background-color: white;">
+                                <tr style="color:#EB1616;">
+                                  <th>Sl.No</th>
+                                  <th>Name</th>
+                                  <th>Mobile No</th>
+                                  <th>Email Id</th>
+                                  <th>State</th>
+                                  <th>District</th>
+                                  <th>Experience</th>
+                                  <th>Username</th>
+                                  <th>Password</th>
+                                  
+                                </tr>
+                              </thead>
+                              <!--Table head-->
+                    
+                              <!--Table body-->
+                           
+                              <tbody>
+                                  {% for row in coach_entry %}
+                                      <tr>
+                                          <td>{{ row.0 }}</td>
+                                          <td>{{ row.1 }}</td>
+                                          <td>{{ row.2 }}</td>
+                                          <td>{{ row.3 }}</td>
+                                          <td>{{ row.4 }}</td>
+                                          <td>{{ row.5 }}</td>
+                                          <td>{{ row.6 }}</td>
+                                          <td>{{ row.7 }}</td>
+                                          <td>{{ row.8 }}</td>
+                                          <!-- <td>
+                                            <a href="/UI/Report/feetitleeport/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.0}}"style="width:35px;height:35px;padding:6px 2px"><span class="glyphicon glyphicon-edit" style="width:32px;height:32px"></span></a>
+                                            <a href="/deletefeetitle/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+                                          </td>
+                                           <td>
+                                            <a href="/deletefeetitle/{{ row.0 }}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure For Delete?')" style="width:35px;height:35px;padding:6px 2px"><span class="glyphicon glyphicon-trash" style="width:32px;height:32px"></span></a>
+                                           </td> -->
+                                    </tr>
+                                    <!-- <div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Update Feetitle</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/UI/Report/feetitleeport" method="POST">
+                                                        <div class="form-group">
+                                                            <label>feetitle:</label>
+                                                            <input type="hidden"  name="id" value="{{row.0}}">
+                                                            <input type="text" class="form-control" name="feetitle"id="feetitle" value="{{row.1}}">
+                             
+                             
+                                                        </div>
+                                                        <div class="form-group">
+                             
+                             
+                                                            <button class="btn btn-primary" type="sbumit">Update</button>
+                             
+                             
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                
+                                </td> 
+                            </tr>
+                            {% endfor  %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
